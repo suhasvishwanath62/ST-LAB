@@ -1,0 +1,38 @@
+#include <stdio.h>
+18 #include <stdlib.h>
+19 
+20 int main()
+21 {
+22 int a,b,c;
+23 
+24 printf("Enter the values for the sides of triangle\n");
+25 scanf("%d%d%d",&a,&b,&c);
+26 
+27 if((a>=1&&a<=10)&&(b>=1&&b<=10)&&(c>=1&&c<=10))
+28 printf("Valid input\n");
+29 else
+30 {
+31 printf("Invalid Input");
+32 exit(0);
+33 }
+34 
+35 if((a<(b+c))&&(b<(a+c))&&(c<(a+b)))
+36 printf("Triangle can be formed\n");
+37 else
+38 {
+39 printf("Triangle cannot be formed\n");
+40 exit(0);
+41 }
+42 
+43 if((a==b)&&(b==c))
+44 printf("It is an Equilateral Triangle\n");
+45 else
+46 {
+47 if((a!=b)&&(b!=c)&&(c!=a))
+48 printf("It is a scalene triangle\n");
+49 else
+50 printf("It is an isosceles triangle\n");
+51 }
+52 
+53 return 0;
+54 }

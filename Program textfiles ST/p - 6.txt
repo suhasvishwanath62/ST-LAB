@@ -1,0 +1,37 @@
+#include<stdio.h> 
+1. int main() 
+{ 
+ 2. int a[20],n,low,high,mid,key,i,flag=0; 
+ 3. printf("Enter the value of n:\n"); 
+ 4. scanf("%d",&n); 
+ 5. if(n>0) 
+ { 
+ 6. printf("Enter %d elements in ASCENDING order\n",n); 
+ 7. for(i=0;i<n;i++) 
+ 8. scanf("%d",&a[i]); 
+ 9. printf("Enter the key element to be searched\n"); 
+ 10. scanf("%d",&key); 
+ 11. low=0; 
+ 12. high=n-1; 
+ 13. while(low<=high) 
+ { 
+ 14 mid=(low+high)/2; 
+ 15 if(a[mid] == key) 
+ { 
+ 16. flag=1; 
+ 17. break; 
+ } 
+ 18. else if(a[mid]<key) 
+ 19. low=mid+1; 
+ 20. else 
+ high=mid-1; 
+ } 
+ 21. if(flag == 1) 
+ 22. printf("Element found at Location %d\n",mid+1); 
+ 23. else 
+printf("Key Element not found\n"); 
+ } 
+ 24. else 
+ printf("Wrong input"); 
+ 25. return 0; 
+}

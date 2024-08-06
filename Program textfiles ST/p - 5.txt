@@ -1,0 +1,48 @@
+ 1 #include<stdio.h>
+ 2 
+ 3 int main()
+ 4 {
+ 5 int locks, stocks, barrels, tlocks, tstocks, tbarrels;
+ 6 float lprice, sprice, bprice, lsales, ssales, bsales, sales, comm;
+ 7 lprice=45.0;
+ 8 sprice=30.0;
+ 9 bprice=25.0;
+10 tlocks=0;
+11 tstocks=0;
+12 tbarrels=0;
+13 printf("Enter the no of locks\n");
+14 scanf("%d",&locks);
+15 while(locks!=-1)
+16 {
+17 printf("Enter the no of stocks and barrels :\n");
+18 scanf("%d%d", &stocks,&barrels);
+19 tlocks = tlocks + locks;
+20 tstocks = tstocks + stocks;
+21 tbarrels = tbarrels + barrels;
+22 printf("Enter -1 for loop to end and display sales commission values\n");
+23 scanf("%d",&locks);
+24 }
+25 printf("Total locks=%d\n", tlocks);
+26 printf("Total stocks=%d\n", tstocks);
+27 printf("Total barrels=%d\n", tbarrels);
+28 lsales = lprice*tlocks;
+29 ssales = sprice*tstocks;
+30 bsales = bprice*tbarrels;
+31 sales = lsales+ssales+bsales;
+32 printf("The total sales=%f\n",sales);
+33 if(sales>1800.0)
+34 {
+35 comm=0.10*1000.0;
+36 comm=comm+0.15*800;
+37 comm=comm+0.20*(sales-1800.0);
+38 }
+39 else if(sales>1000)
+40 {
+41 comm=0.10*1000;
+42 comm=comm+0.15*(sales-1000.0);
+43 }
+44 else
+45 comm=0.10*sales;
+46 printf("The commission is = %f\n",comm);
+47 return 0;
+48 }

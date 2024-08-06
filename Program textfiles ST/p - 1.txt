@@ -1,0 +1,95 @@
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int main()
+{
+int locks, stocks, barrels, t_sales, flag=0;
+float commission;
+
+printf("Enter the total number of locks\n");
+scanf("%d",&locks);
+
+/*
+Here flag is used to check invalid input.
+Invalid input means locks, stocks and barrels exceeding daily limit value.
+Locks value is less than or equal to zero or more than 70.
+Stocks value is less than or equal to zero or more than 80.
+Barrels value is less than or equal to zero or more than 90.
+*/
+if(locks==-1)
+{
+printf("program ends\n");
+exit(0);
+}
+if((locks<=0)||(locks>70))
+{
+printf("Values of locks not in range of 1...70\n");
+exit(0);
+}
+ 
+printf("Enter the total number of stocks\n");
+scanf("%d",&stocks);
+
+if((stocks<=0)||(stocks>80))
+{
+printf("Values of stocks not in range of 1...80\n");
+exit(0);
+}
+
+printf("Enter the total number of barrels\n");
+scanf("%d",&barrels);
+
+if((barrels<=0)||(barrels>90))
+{
+printf("Values of barrels not in range of 1...90\n");
+exit(0);
+}
+ 
+t_sales=(locks*45)+(stocks*30)+(barrels*25); //Total Sales value
+
+//Three conditions of calculating commission.
+if(t_sales<=1000)
+{
+commission=0.10*t_sales;
+}
+ 
+else if(t_sales<1800)
+{
+commission=0.10*1000;
+commission=commission+(0.15*(t_sales-1000));
+}
+ 
+else
+{
+commission=0.10*1000;
+commission=commission+(0.15*800);
+commission=commission+(0.20*(t_sales-1800));
+}
+
+printf("The total sales is %d\n",t_sales); //
+printf("The commission is %f",commission);
+return 0;
+}
+
+---Test cases:---
+
+testcase id | input,locks|stocks|Barrels | expexted O/P,Total sales|commission | same actual | status | Description
+1                     1     1      1                        100       10.0                             min vlaue
+2                     70    80    90                       7800       1420.0                           max value
+3                     1     40    60                       2745       409.0                            min of lock
+4                     30    1     60                       2880       436.0                            min of stock
+5                     30    30    1                        2275       315.0                            min barrel
+6                     70    40    60                       5850       1030.0                           max of locks
+7                     30    80    50                       5000       860.0                                stocks
+8                     40    50    90                       5550       970.0                                barrels
+9                     2     40    50                       2540       368.0                         min+value of loc
+10                    30    2     50                       2660       392.0                         min+value of sto
+11                    40    40    2                        3050       470.0                            barrel
+12                    69    50    60                       6105       1081.0                        max-val of lock
+13                    40    79    50                       5420       944.0                             stock
+14                    40    60    89                       5825       1025.0                           barrel
+15                    -1    -     -                        program ends value of                 program ends -1 
+16                    0     -     -                        locks,stocks,barrels              lock out of range 1..70
+17                    40    -1    -                        not in range of 1..70               stock 0..80
+18                    40    50    200                      1..80,1..90                         barrel 0..90
+19                    35    40    45                       3675        595.0              nominal value for L,S,B

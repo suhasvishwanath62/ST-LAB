@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+11 int main()
+12 {
+13 int day,month,year;
+14 int tmday=0,tmmonth=0,tmyear=0;
+15 int c1=0,c2=0,c3=0;
+16 
+17 printf("enter todays date in the form of mm/dd/yyyy\n");
+18 scanf("%d/%d/%d",&month,&day,&year);
+19 
+20 tmmonth=month;
+21 tmday=day;
+22 tmyear=year;
+23 
+24 if(day>=1&&day<=31)
+25 c1=1;
+26 if(month>=1&&month<=12)
+27 c2=1;
+28 if(year>=1823&&year<=2023)
+29 c3=1;
+30 
+31 if(c1&&c2&&c3)
+32 {
+33 switch(month)
+34 {
+35 case 1:
+36 case 3:
+37 case 5:
+38 case 7:
+39 case 8:
+40 case 10: if(day<31) //less than 31 days
+41 tmday=day+1;
+42 else //if 31st day
+43 {
+44 tmday=1;
+45 tmmonth=month+1;
+46 }
+47 break;
+48 
+49 case 4:
+50 case 6:
+51 case 9:
+52 case 11:if(day<30) //less than 30 days
+53 tmday=day+1;
+54 else
+55 {
+56 if(day==30) //if 30th day
+57 {
+58 tmday=1;
+59 tmmonth=month+1;
+60 }
+61 else
+62 printf("invalid input\n");
+63 }
+64 break;
+65 
+66 case 12:if(day<31)
+67 tmday=day+1;
+68 else //if 31st day
+69 {
+70 tmday=1;
+71 tmmonth=1;
+72 }
+73 
+74 if(year==2023)
+75 printf("invalid input\n");
+76 else
+77 tmyear=year+1; //anything less than 2023
+78 break;
+79 
+80 case 2:if(day<28) //less than 28
+81 tmday=day+1;
+82 else
+83 {
+84 if(day==28) //if 28th day
+85 {
+86 if(year%4==0) //check for leap year
+87 tmday=29;
+88 else //if not leap year
+89 {
+90 tmday=1;
+91 tmmonth=3;
+92 }
+93 }
+94 
+95 else
+96 {
+97 if(day==29) //if in leap year
+98 {
+99 if(year%4==0)
+100 {
+101 tmday=1;
+102 tmmonth=3;
+103 }
+104 else
+105 {
+106 if(day>29)
+107 printf("invalid input\n");
+108 }
+109 }
+110 else
+111 printf("invalid input\n");
+112 }
+113 }
+114 break;
+115 
+116 default:printf("invalid input\n");
+117 break;
+118 }
+119 printf("next date is %d/%d/%d",tmmonth,tmday,tmyear);
+120 }
+121 else
+122 printf("date out of range");
+123 return 0;
+124 }
